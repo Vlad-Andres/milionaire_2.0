@@ -15,9 +15,6 @@ public class splash_screen extends AppCompatActivity {
         setContentView(R.layout.splash_screen);
         // -- animation
         final TextView lbl = findViewById(R.id.splash_txt);
-        connectionClass connect_test = new connectionClass();
-        lbl.setText("123");
-        lbl.setText(connect_test.test_db());
         Animation anim = AnimationUtils.loadAnimation(this,R.anim.fadeout);
         anim.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -27,7 +24,6 @@ public class splash_screen extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                lbl.setText("Finished");
                 // -- fragments
                 ViewPager viewPager = findViewById(R.id.view_pager);
                 viewPager.setOffscreenPageLimit(1);
