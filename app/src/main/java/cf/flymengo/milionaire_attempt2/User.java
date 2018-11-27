@@ -3,6 +3,7 @@ package cf.flymengo.milionaire_attempt2;
 import android.media.Image;
 
 public class User {
+    public static String test_var;
     public static int wallet,id;
     public static String name, nickname,rank,email;
     public static Image avatar_img;
