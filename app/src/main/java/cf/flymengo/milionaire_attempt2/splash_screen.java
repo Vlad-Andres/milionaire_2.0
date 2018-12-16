@@ -30,6 +30,7 @@ public class splash_screen extends AppCompatActivity {
                 SwipeAdapter swipe_adapter= new SwipeAdapter(getSupportFragmentManager());
                 viewPager.setAdapter(swipe_adapter);
                 viewPager.setCurrentItem(0);
+                anim.cancel();
             }
 
             @Override
@@ -37,7 +38,7 @@ public class splash_screen extends AppCompatActivity {
 
             }
         });
-        if (!anim.hasStarted() || anim.hasEnded()){ lbl.startAnimation(anim); }
+        if (!anim.hasStarted()){ lbl.startAnimation(anim); }
 
     }
 }

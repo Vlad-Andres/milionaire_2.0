@@ -1,16 +1,21 @@
 package cf.flymengo.milionaire_attempt2;
 
+import android.graphics.Bitmap;
 import android.media.Image;
 
+
 public class User {
+
     public static String test_var;
-    public static int wallet,id;
+    public static int wallet;
+    public static int id;
+
     public static String name, nickname,rank,email;
-    public static Image avatar_img;
+    public static Bitmap avatar_img;
     public User() {
         super();
     }
-    public User(int ident, String nm, String nk, String rnk, int wall, String mail) //, byte[] img
+    public User(int ident, String nm, String nk, String rnk, int wall, String mail, Bitmap img) //, byte[] img
     {
         id = ident;
         name = nm;
@@ -24,6 +29,6 @@ public class User {
             MemoryStream avatar_stream = new MemoryStream(img);
             avatar_img = Image.FromStream(avatar_stream);
         }*/
-        avatar_img = null;
+        avatar_img = img;
     }
 }

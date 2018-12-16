@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +41,7 @@ public class registrationPage extends Fragment implements View.OnClickListener {
         nick_txt = view.findViewById(R.id.nickname_txt);
         pass_txt = view.findViewById(R.id.password_txt);
         email_txt = view.findViewById(R.id.email_txt);
-        reg_btn = (Button)view.findViewById(R.id.reg_btn);
+        reg_btn = view.findViewById(R.id.reg_btn);
         progressDialog = new ProgressDialog(getActivity());
 
         reg_btn.setOnClickListener(this);
@@ -59,12 +60,15 @@ public class registrationPage extends Fragment implements View.OnClickListener {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        //Toast.makeText(getActivity(),"onResponse", Toast.LENGTH_LONG).show();
                         progressDialog.dismiss();
 
                         try {
+                            Log.w("response", response);
                             JSONObject jsonObject = new JSONObject(response);
                             Toast.makeText(getActivity(),jsonObject.getString("message"), Toast.LENGTH_LONG).show();
                         } catch (JSONException e) {
+                            Log.e("error",e.toString(), e);
                             e.printStackTrace();
                         }
 
@@ -74,7 +78,7 @@ public class registrationPage extends Fragment implements View.OnClickListener {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.hide();
-                        Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "Error connection!!!", Toast.LENGTH_LONG).show();
                     }
                 }){
             @Override
